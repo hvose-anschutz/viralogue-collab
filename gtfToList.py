@@ -1,7 +1,7 @@
 ERVlist = []
 #empty ERV list
 
-with open('Hsap38_ERV.gtf','r') as g:
+with open('Mmus38_ERV.txt','r') as g:
     #open gtf file and read as g
     for items in g.readlines():
         info = items.strip().split('\t')
@@ -18,7 +18,7 @@ with open('Hsap38_ERV.gtf','r') as g:
         #add the name, chromosome, and coordinates to the list
 g.close()
 
-file = 'Hsap38_ERV_Coordinates.txt'
+file = 'Mmus38_ERV_Coordinates.txt'
 #make a new file for the info
 with open(file, 'w') as h:
     for coordinates in ERVlist:
