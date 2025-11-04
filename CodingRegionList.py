@@ -14,7 +14,7 @@ with open('Mmus38_ERV_Coordinates.txt','r') as h, open(title,'w') as o:
         #ERV last coordinate
         e = coordinates[0]
         #ERV name
-        with open('SRR32782394.Strict.mapped_to_mm10Aligned.out.sam','r') as s:
+        with open('SRR32782394.Strict.mapped_to_mm10Aligned.sam','r') as s:
             for reads in s:
                 currentline = reads.split()
                 #split strings to turn into a list
