@@ -1,0 +1,4 @@
+CodingRegionList - gets transcripts in coding region (need to run on mouse BAM file)
+- uses Mmus38_ERV_coordinates.txt and SRR32782394
+
+TSSList - Gets transcripts at the start site for each item depending on ERV or LINE status
