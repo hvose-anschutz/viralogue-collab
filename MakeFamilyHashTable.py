@@ -15,7 +15,7 @@ with open('SRR32782394_ERVcount_min1.txt','r') as g:
         #1 index is integer of count of ERV
         family = re.search(r"\|([^ |\n]+)",name)
         #search in name for just the family, we want everything after the | and before a space or new line character
-        if family.group(1) in familylist.keys():
+        if family.group(1) in familylist:
             #making familylist the dictionary of ERVs (keys) and count (values) in that experiment
             familylist[family.group(1)] += count
             #group 1 is just the family, if family name is already in familylist dictionary, add new count to existing count
