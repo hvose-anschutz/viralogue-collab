@@ -10,11 +10,11 @@ filename = "PRJNA1238225_hashtable_min1.txt"
 output_filename = "PRJNA1238225_allspecies_ERV.txt"
 look_for = "ERV"
 
-regex_dict = {"LINE":r"(L1)",
-              "ERV":r"(ERV[1LK])[^\d]"}
-
 include_groups = True
 print_others = False
+
+REGEX_DICT = {"LINE":r"(L1)",
+              "ERV":r"(ERV[1LK])[^\d]"}
 
 ERV_list = {}
 
@@ -25,21 +25,46 @@ with open(filename, "r", encoding="utf-8") as f:
         count = int(my_items[1])
 
         first_ERV = re.search(r"^[^ ]+",ERV).group(0)
+        my_species = re.search(r"(.*?)\|",first_ERV)
 
         try:
-            my_match = re.search(regex_dict[look_for],first_ERV)
-            if my_match is not None:
-                my_species = re.search(r"(.*?)\|",first_ERV)
-                if my_species.group(1) not in ERV_list:
-                    if include_groups:
-                        ERV_list[my_species.group(1)] = [count, my_match.group(1)]
+            if not print_others:
+                my_match = re.search(REGEX_DICT[look_for],first_ERV)
+                if my_match is not None:
+                    if my_species.group(1) not in ERV_list:
+                        if include_groups:
+                            ERV_list[my_species.group(1)] = [count, my_match.group(1)]
+                        else:
+                            ERV_list[my_species.group(1)] = count
                     else:
-                        ERV_list[my_species.group(1)] = count
+                        if include_groups:
+                            ERV_list[my_species.group(1)][0] += count
+                        else:
+                            ERV_list[my_species.group(1)] += count
+            else:
+                my_match = re.search(REGEX_DICT[look_for],first_ERV)
+                if my_match is not None:
+                    if my_species.group(1) not in ERV_list:
+                        if include_groups:
+                            ERV_list[my_species.group(1)] = [count, my_match.group(1)]
+                        else:
+                            ERV_list[my_species.group(1)] = count
+                    else:
+                        if include_groups:
+                            ERV_list[my_species.group(1)][0] += count
+                        else:
+                            ERV_list[my_species.group(1)] += count
                 else:
-                    if include_groups:
-                        ERV_list[my_species.group(1)][0] += count
+                    if my_species.group(1) not in ERV_list:
+                        if include_groups:
+                            ERV_list[my_species.group(1)] = [count, "other"]
+                        else:
+                            ERV_list[my_species.group(1)] = count
                     else:
-                        ERV_list[my_species.group(1)] += count
+                        if include_groups:
+                            ERV_list[my_species.group(1)][0] += count
+                        else:
+                            ERV_list[my_species.group(1)] += count
         except KeyError as e:
             print("Valid options are LINE or ERV for look_for parameter.")
             sys.exit(1)
