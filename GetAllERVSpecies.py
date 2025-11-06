@@ -14,6 +14,7 @@ regex_dict = {"LINE":r"(L1)",
               "ERV":r"(ERV[1LK])[^\d]"}
 
 include_groups = True
+print_others = False
 
 ERV_list = {}
 
