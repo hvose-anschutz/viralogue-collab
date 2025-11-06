@@ -3,7 +3,7 @@ import re
 specieslist={}
 #saying that specieslist is going to be a dictionary (filled with keys and values) for later
 
-with open('SRR32782394_ERVcount_min1.txt','r') as g:
+with open('SRR32782394_ERVCodingcount_min1.txt','r') as g:
     #open tab delimited hash table as g and read
     for items in g.readlines():
         #for each item in g, read and do the following:
@@ -23,7 +23,7 @@ with open('SRR32782394_ERVcount_min1.txt','r') as g:
             specieslist[family.group(1)] = count
             #if family name isn't in specieslist dictionary already, make a new key value pairing with its count
 
-title = 'SRR32782394_speciescount.txt'
+title = 'SRR32782394_Codingspeciescount.txt'
 #making a new txt file that includes the ERV families and how many times they showed up
 with open(title,'w') as f:
     for keys,values in specieslist.items():
