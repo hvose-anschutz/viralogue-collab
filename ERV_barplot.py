@@ -43,12 +43,13 @@ def find_erv(filename: str, mode: str|None=None, preformatted: bool=False) -> di
     f.close()
 
     if preformatted:
-        df_dict = {"Name":my_names}
+        df_dict = {"Name":list(set(my_names))}
 
     total_ervs = sum(my_erv_species.values())
 
     for erv in my_erv_species:
         df_dict[erv] = my_erv_species[erv] / total_ervs
+
 
     return df_dict
 
@@ -57,16 +58,25 @@ def find_erv(filename: str, mode: str|None=None, preformatted: bool=False) -> di
 
 erv_list = "PRJNA1238225_allspecies_ERV.txt"
 outfile = "my_stacked_barplot.svg"
+subset = ["L1"]
 save_figure = True
 ###############################################################
 
 if __name__ == "__main__":
 
-    df_dict = find_erv(erv_list,preformatted=True)
+    my_df_dict = find_erv(erv_list,preformatted=True)
 
-    df = pd.DataFrame(df_dict)
+    read_df = pd.read_table(erv_list,names=["ERV","count","ERV Family"])
 
-    df_pivot = df.pivot_table(index="Name",values=df_dict.keys(),aggfunc=sum)
+    print(read_df.head())
+
+    df = pd.DataFrame(my_df_dict,)
+
+    sub_df = df[df["Name"] == "L1"]
+
+    df_pivot = sub_df.pivot_table(index="Name",values=my_df_dict.keys(),aggfunc=sum)
+
+    print(df_pivot.head())
 
     my_plot = df_pivot.plot(kind="bar",stacked=True,grid=True)
     my_plot.set_axisbelow(True)
