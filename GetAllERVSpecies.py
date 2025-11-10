@@ -96,13 +96,10 @@ def format_ERVs(ERV_list: dict,
 
 
 if __name__ == "__main__":
-    filename = "PRJNA1238225_hashtable_min1.txt"
-    output_filename = "PRJNA1238225_allspecies_ERV.txt"
+    filename = "SRR32782394_ERVCodingcount_min1.txt"
+    output_filename = "PRJNA1238225_allspecies_ERV_1.txt"
     look_for = "LINE"
 
-    include_groups = True
-    print_others = False
-    find_all = True
     REGEX_DICT = {"LINE":r"(L1)",
                 "ERV":r"(ERV(?:K|L|1(?!\d)))"}
 
@@ -119,7 +116,7 @@ if __name__ == "__main__":
 
             format_ERVs(ERV_list_d,look_for,first_ERV,species,my_count,
                         include_groups=True,
-                        print_others=False,
+                        print_others=True,
                         find_all=True)
 
     f.close()
