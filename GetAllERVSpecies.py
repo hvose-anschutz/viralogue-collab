@@ -28,10 +28,11 @@ def format_ERVs(ERV_list: dict,
                     ERV_list[my_species] += count
 
         case (True, False, False): #we want to print the groups, but we're only looking at ERV_to_find
-            if my_species not in ERV_list:
-                ERV_list[my_species] = [count, my_match.group(1)]
-            else:
-                ERV_list[my_species][0] += count
+            if my_match is not None:
+                if my_species not in ERV_list:
+                    ERV_list[my_species] = [count, my_match.group(1)]
+                else:
+                    ERV_list[my_species][0] += count
 
         case (True, True, False): #we want to have groups and group everything else in the file as "other"
             if my_match is not None:
@@ -96,13 +97,10 @@ def format_ERVs(ERV_list: dict,
 
 
 if __name__ == "__main__":
-    filename = "PRJNA1238225_hashtable_min1.txt"
-    output_filename = "PRJNA1238225_allspecies_ERV.txt"
-    look_for = "LINE"
+    filename = "SRR32782394_ERVcount_min1.txt"
+    output_filename = "SRR32782394_ERV_allreads.txt"
+    look_for = "ERV"
 
-    include_groups = True
-    print_others = False
-    find_all = True
     REGEX_DICT = {"LINE":r"(L1)",
                 "ERV":r"(ERV(?:K|L|1(?!\d)))"}
 
@@ -120,7 +118,7 @@ if __name__ == "__main__":
             format_ERVs(ERV_list_d,look_for,first_ERV,species,my_count,
                         include_groups=True,
                         print_others=False,
-                        find_all=True)
+                        find_all=False)
 
     f.close()
 

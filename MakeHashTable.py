@@ -23,7 +23,7 @@ for p in ERVlist:
     else:
         experimentlist[p]=1
         #if ERV isn't in experimentlist dictionary already, make a new key value pairing
-title = 'SRR32782394_ERVcount_min1.txt'
+title = 'SRR32782394_ERVCodingcount_min1.txt'
 #making a new txt file that includes the ERVs and how many times they showed up
 with open(title,'w') as f:
     for keys,values in experimentlist.items():
