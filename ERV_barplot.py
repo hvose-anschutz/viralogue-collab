@@ -123,8 +123,8 @@ if __name__ == "__main__":
     parser.add_argument("-p","--pattern",default="family",dest='my_pattern',type=str,help='the pattern to be searched for in the file.')
     args = parser.parse_args()
         
-    erv_list = args.erv_list #"PRJNA1238225_allspecies_ERV_1.txt"
-    outfile = args.outfile#"L1_stacked_barplot.svg"
+    erv_list = args.erv_list
+    outfile = args.outfile
     save_figure = args.save_figure
     my_pattern = args.my_pattern
 
