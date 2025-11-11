@@ -134,6 +134,10 @@ if __name__ == "__main__":
     
     df_pivot = pivot_barplot(df,pattern=my_pattern)
 
+    ncol_val = df_pivot.shape[1] // 15
+    if ncol_val == 0:
+        ncol_val = 1
+
     # big_gradient = distinct_colors(df_pivot.shape[1])
     # random.shuffle(big_gradient)
     #big_gradient = sns.color_palette("husl", df_pivot.shape[1]).as_hex()
@@ -155,7 +159,7 @@ if __name__ == "__main__":
     my_plot.spines['left'].set_visible(False)
     my_plot.grid(axis="y",linestyle='--',alpha=0.7)
     my_plot.grid(axis="x",visible=False)
-    plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left",ncol=6)
+    plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left",ncol=ncol_val)
     plt.ylabel('Percentage of L1')
     plt.xticks(rotation=0)
     if save_figure:
