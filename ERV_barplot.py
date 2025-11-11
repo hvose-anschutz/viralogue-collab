@@ -2,6 +2,7 @@
 
 """Makes a stacked barplot of ERV family and species."""
 
+import argparse
 import colorsys
 import random
 import re
@@ -111,14 +112,21 @@ def distinct_colors(n: int, lightness: float = 0.5, saturation: float = 0.7) -> 
 
 ###############################################################
 # CHANGE THIS CODE
-
-erv_list = "PRJNA1238225_allspecies_ERV_1.txt"
-outfile = "L1_stacked_barplot.svg"
-save_figure = False
-my_pattern = "ERV"
 ###############################################################
 
 if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description= "Argument parser for ERV Barplot Functionality")
+    parser.add_argument("-e","--erv_list",default=None,dest='erv_list',type=str,help='name of the erv list to parse')
+    parser.add_argument("-o","--output",default=None,dest='outfile',type=str,help='output filename')
+    parser.add_argument("-s","--save_fig",default=False,action='store_true',dest='save_figure',help='flag to save the outputted image. default is True.')
+    parser.add_argument("-p","--pattern",default="family",dest='my_pattern',type=str,help='the pattern to be searched for in the file.')
+    args = parser.parse_args()
+        
+    erv_list = args.erv_list #"PRJNA1238225_allspecies_ERV_1.txt"
+    outfile = args.outfile#"L1_stacked_barplot.svg"
+    save_figure = args.save_figure
+    my_pattern = args.my_pattern
 
     df = pd.read_table(erv_list,names=["ERV","count","ERV Family"])
 
