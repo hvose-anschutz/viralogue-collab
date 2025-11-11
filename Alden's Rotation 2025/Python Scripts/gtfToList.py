@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+"""Convert gene tag file (gtf) to a tab delimited txt
+with only the ERV name, chromosome number, first
+coordinate, and last coordinate."""
+
 ERVlist = []
 #empty ERV list
 

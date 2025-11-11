@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+
+"""Sort SRA files by PRJNA."""
+
 import requests
 import re
 #re=regular expression
