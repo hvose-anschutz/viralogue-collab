@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+"""Make alignment (.sam) files against a genome for 
+fastq files that are single end rather than paired end."""
+
 import re
 import subprocess
 import sys

@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
 """A test of the multiprocessing library for speeding
-up the reading of 33 million lines."""
+up the reading of 33 million lines. Compares the count 
+table for reads overlapping any part of the retroelements 
+(made from analyzerepeats/makegenecountmatrix) and the 
+count table for reads within the retroelement coding 
+regions (made from CodingRegionMultiprocessing.py) and 
+makes a coding count table for reads in the coding regions 
+and reads that have an expression level above 1 for the 
+sample of interest"""
 
 import time
 from multiprocessing import Pool, cpu_count

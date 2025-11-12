@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+
+"""Convert multiple .sam files to .bam files."""
+
 import re
 import subprocess
 import sys

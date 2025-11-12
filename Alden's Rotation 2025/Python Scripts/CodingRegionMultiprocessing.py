@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 """A test of the multiprocessing library for speeding
-up the reading of 33 million lines."""
+up the reading of 33 million lines. Outputs a count table 
+with only reads in the retroelement coding regions. Note 
+this does not take into account expression values."""
 
 import time
 from multiprocessing import Pool, cpu_count

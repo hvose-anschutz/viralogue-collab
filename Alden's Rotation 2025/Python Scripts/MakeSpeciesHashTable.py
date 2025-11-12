@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+"""Make a species hash table (each retroelement species 
+and how many reads map to there) for all retroelements 
+in a hash table."""
+
 import re
 
 specieslist={}
