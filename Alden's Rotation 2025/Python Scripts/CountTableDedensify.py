@@ -7,7 +7,7 @@ table for reads overlapping any part of the retroelements
 count table for reads within the retroelement coding 
 regions (made from CodingRegionMultiprocessing.py) and 
 makes a coding count table for reads in the coding regions 
-and reads that have an expression level above 1 for the 
+and reads that have an expression level above 0 for the 
 sample of interest"""
 
 import time

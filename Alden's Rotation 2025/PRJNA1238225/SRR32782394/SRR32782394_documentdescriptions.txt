@@ -1,0 +1,13 @@
+SRR32782394: mouse sample from PRJNA1238225
+
+SRR32782394_allspecies_allreads.txt:
+    Has all retroelements, their count by species, and what family they're in
+    I made this to know total retroelement abundance
+    Generated from: GetAllERVSpecies.py
+        Input: SRR32782394_ERVcount_min1.txt
+SRR32782394_CodingCountTable.txt
+    Count table with reads in the coding regions and with expressions above 0
+    Generated from: CountTableDedensify.py
+        Input: PRJNA1238225_CountTable.txt and SRR32782394_CodingRegionList (on lab server, too big for GitHub)
+SRR32782394_Codingfamilycount_min1.txt
+SRR32782394

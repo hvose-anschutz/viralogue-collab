@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 
 """Returns all valid family and species of
-ERV based on a specified pattern."""
+ERV based on a specified pattern. Uses the 
+hash table to make a list of the retroelement 
+species that show up, how many times they show 
+up, and what family they're in. Similar to 
+MakeSpeciesHashTable.py but it includes if the 
+species is an ERV1/K/L, LINE1, or other."""
 
 import re
 import sys
