@@ -1,13 +1,61 @@
 SRR32782394: mouse sample from PRJNA1238225
 
-SRR32782394_allspecies_allreads.txt:
-    Has all retroelements, their count by species, and what family they're in
+SRR32782394_allspecies_allreads.txt
+    Count of all retroelements, their count by species, and what family they're in
     I made this to know total retroelement abundance
     Generated from: GetAllERVSpecies.py
         Input: SRR32782394_ERVcount_min1.txt
+        Format_ERVs:
+        include_groups=True,
+        print_others=True,
+        find_all=True
 SRR32782394_CodingCountTable.txt
     Count table with reads in the coding regions and with expressions above 0
     Generated from: CountTableDedensify.py
         Input: PRJNA1238225_CountTable.txt and SRR32782394_CodingRegionList (on lab server, too big for GitHub)
 SRR32782394_Codingfamilycount_min1.txt
-SRR32782394
+    Family counts for coding region retroelements with a minimum expression of 1
+    Generated from: MakeFamilyHashTable.py
+        Input: SRR32782394_ERVCodingcount_min1.txt
+SRR32782394_Codingspeciescount_min1.txt
+    Species counts for coding region retroelements with a minimum expression of 1
+    Generated from: MakeSpeciesHashTable.py
+        Input: SRR32782394_ERVCodingcount_min1.txt
+SRR32782394_ERV_allreads.txt
+    Count of all ERV species (not just coding region) and what family they are in
+    I used this for total ERV abundance
+    Generated from GetAllERVSpecies.py
+        Input: SRR32782394_ERVcount_min1.txt
+        Look_for = "ERV"
+        Format_ERVs:
+            include_groups=True,
+            print_others=False,
+            find_all=False
+SRR32782394_ERVCodingcount_min1.txt
+    Count of all coding retroelements with a minimum expression of 1
+    Generated from MakeHashTable.py
+        Input: SRR32782394_CodingCountTable.txt
+        Minimum expression: 1
+SRR32782394_ERVcount_min1.txt
+    Count of all retroelements with a minimum expression of 1
+    Generated from MakeHashTable.py
+        Input: I am 99% sure it's PRJNA1238225_CountTable.txt
+        Minimum expression: 1
+SRR32782394_familycountmin1.txt
+    Count of all retroelement families with a minimum expression of 1
+    Generated from MakeFamilyHashTable.py
+        Input: SRR32782394_ERVcount_min1.txt
+SRR32782394_LINE1_allreads.txt
+    Count of all LINE-1 species (not just coding region) and what family they are in
+    I used this for total LINE-1 abundance
+    Generated from GetAllERVSpecies.py
+        Input: SRR32782394_ERVcount_min1.txt
+        Look_for = "LINE"
+        Format_ERVs:
+            include_groups=False,
+            print_others=False,
+            find_all=False
+SRR32782394_speciescountmin1.txt
+    Count of all retroelement families with a minimum expression of 1
+    Generated from MakeSpeciesHashTable.py
+        Input: SRR32782394_ERVcount_min1.txt
